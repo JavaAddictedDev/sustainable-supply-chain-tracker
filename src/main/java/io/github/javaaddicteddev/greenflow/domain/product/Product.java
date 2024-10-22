@@ -16,14 +16,14 @@ public class Product extends AggregateRoot<ProductID> {
 
     private String name;
     private String description;
-    private Category category;
+    private String category;
     private Stackholder currentOwner;
 
     private Product(
             ProductID anId,
             String aName,
             String aDescription,
-            Category aCategory,
+            String aCategory,
             Stackholder aCurrentOwner) {
         super(anId);
         this.name =  aName;
@@ -32,7 +32,7 @@ public class Product extends AggregateRoot<ProductID> {
         this.currentOwner = aCurrentOwner;
     }
 
-    public static Product newProduct(String aName, String aDescription, Category aCategory, Stackholder aCurrentOwner) {
+    public static Product newProduct(String aName, String aDescription, String aCategory, Stackholder aCurrentOwner) {
         final var id = ProductID.unique();
         return new Product(id, aName, aDescription, aCategory, aCurrentOwner);
     }
@@ -49,7 +49,7 @@ public class Product extends AggregateRoot<ProductID> {
         return description;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
