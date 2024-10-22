@@ -6,6 +6,8 @@ package io.github.javaaddicteddev.greenflow.domain.product;
 
 import io.github.javaaddicteddev.greenflow.domain.AggregateRoot;
 import io.github.javaaddicteddev.greenflow.domain.Stackholder;
+import io.github.javaaddicteddev.greenflow.domain.validation.ValidationHandler;
+
 import java.util.UUID;
 
 /**
@@ -35,6 +37,11 @@ public class Product extends AggregateRoot<ProductID> {
     public static Product newProduct(String aName, String aDescription, String aCategory, String aCurrentOwner) {
         final var id = ProductID.unique();
         return new Product(id, aName, aDescription, aCategory, aCurrentOwner);
+    }
+
+    @Override
+    public void validate(final ValidationHandler aHandler) {
+        new UserValidator(aHandler).validate();
     }
 
     public ProductID getId() {

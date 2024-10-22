@@ -4,6 +4,8 @@
  */
 package io.github.javaaddicteddev.greenflow.domain;
 
+import io.github.javaaddicteddev.greenflow.domain.validation.ValidationHandler;
+
 import java.util.Objects;
 
 /**
@@ -18,6 +20,8 @@ public abstract class Entity<ID extends Identifier> {
         Objects.requireNonNull(id, "'Id' should not be null.");
         this.id = id;
     }
+
+    public abstract void validate(ValidationHandler aHandler);
 
     public ID getId() {
         return id;
