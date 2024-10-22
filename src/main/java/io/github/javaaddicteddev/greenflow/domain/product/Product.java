@@ -32,7 +32,7 @@ public class Product extends AggregateRoot<ProductID> {
         this.currentOwner = aCurrentOwner;
     }
 
-    public Product newProduct(String aName, String aDescription, Category aCategory, Stackholder aCurrentOwner) {
+    public static Product newProduct(String aName, String aDescription, Category aCategory, Stackholder aCurrentOwner) {
         final var id = ProductID.unique();
         return new Product(id, aName, aDescription, aCategory, aCurrentOwner);
     }
