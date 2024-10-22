@@ -4,28 +4,40 @@
  */
 package io.github.javaaddicteddev.greenflow.domain.product;
 
+import io.github.javaaddicteddev.greenflow.domain.AggregateRoot;
+import io.github.javaaddicteddev.greenflow.domain.Stackholder;
 import java.util.UUID;
 
 /**
  *
  * @author rengoku
  */
-public class Product {
-    private UUID id;
-    private String name; 
+public class Product extends AggregateRoot<ProductID> {
+
+    private String name;
     private String description;
     private Category category;
     private Stackholder currentOwner;
 
-    public Product(UUID id, String name, String description, Category category, Stackholder currentOwner) {
-        this.id = id;
+    private Product(
+            ProductID anId,
+            String name,
+            String description,
+            Category category,
+            Stackholder currentOwner) {
+        super(anId);
         this.name = name;
         this.description = description;
         this.category = category;
         this.currentOwner = currentOwner;
     }
 
-    public UUID getId() {
+    public Product newProduct(String aName, String aDescription, Category aCategory, Stackholder aCurrentOwner) {
+        final var id = ProductID.unique();
+        return new Product(id, aName, aDescription, aCategory, aCurrentOwner);
+    }
+
+    public ProductID getId() {
         return id;
     }
 
