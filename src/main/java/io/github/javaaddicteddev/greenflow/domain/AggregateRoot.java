@@ -9,7 +9,7 @@ package io.github.javaaddicteddev.greenflow.domain;
  * @author rengoku
  * @param <ID>
  */
-public class AggregateRoot<ID extends Identifier> extends Entity<ID> {
+public abstract class AggregateRoot<ID extends Identifier> extends Entity<ID> {
     
     public AggregateRoot(ID id) {
         super(id);
