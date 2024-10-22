@@ -21,15 +21,15 @@ public class Product extends AggregateRoot<ProductID> {
 
     private Product(
             ProductID anId,
-            String name,
-            String description,
-            Category category,
-            Stackholder currentOwner) {
+            String aName,
+            String aDescription,
+            Category aCategory,
+            Stackholder aCurrentOwner) {
         super(anId);
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.currentOwner = currentOwner;
+        this.name =  aName;
+        this.description = aDescription;
+        this.category = aCategory;
+        this.currentOwner = aCurrentOwner;
     }
 
     public Product newProduct(String aName, String aDescription, Category aCategory, Stackholder aCurrentOwner) {
